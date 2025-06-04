@@ -1,18 +1,27 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import RNG from "kol-rng";
-import allEffects from "../effects.json";
 import { NumberInput } from "./NumberInput";
 import { Container } from "../../styled-system/jsx";
 import { Header } from "./Header";
 import { FormLabel } from "./FormLabel";
 import { Stack } from "../../styled-system/jsx";
 import { EffectList } from "./EffectList";
-
-export type Effect = [id: number, name: string];
+import { load, type Effect } from "../data";
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [power, setPower] = useState<number | undefined>(undefined);
   const [cast, setCast] = useState(1);
+  const [allEffects, setAllEffects] = useState<Effect[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      setAllEffects(await load());
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const effects = useMemo(() => {
     const list: Effect[] = [];
@@ -28,19 +37,21 @@ function App() {
     const rng = new RNG(seed);
 
     for (let i = 0; i < total; i++) {
-      list.push(rng.pickOne(allEffects as Effect[]));
+      list.push(rng.pickOne(allEffects));
     }
     return list;
-  }, [power, cast]);
+  }, [allEffects, power, cast]);
 
   return (
     <Container padding={8}>
       <Stack gap={8}>
         <Header />
+        {loading && <p>Loading...</p>}
         <Stack>
           <FormLabel>Power</FormLabel>
           <NumberInput
             value={power?.toString()}
+            disabled={loading}
             onValueChange={({ valueAsNumber }) =>
               setPower(Number.isNaN(valueAsNumber) ? undefined : valueAsNumber)
             }
@@ -52,6 +63,7 @@ function App() {
             step={1}
             min={1}
             max={5}
+            disabled={loading}
             value={cast?.toString()}
             onValueChange={({ valueAsNumber }) =>
               setCast(Number.isNaN(valueAsNumber) ? 1 : valueAsNumber)

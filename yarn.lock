@@ -3331,6 +3331,7 @@ __metadata:
     "@types/react": "npm:^19.1.2"
     "@types/react-dom": "npm:^19.1.2"
     "@vitejs/plugin-react": "npm:^4.4.1"
+    data-of-loathing: "npm:^2.2.0"
     eslint: "npm:^9.25.0"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-react-refresh: "npm:^0.4.19"
@@ -3619,6 +3620,13 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+  languageName: node
+  linkType: hard
+
+"data-of-loathing@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "data-of-loathing@npm:2.2.0"
+  checksum: 10c0/1870a05dcd02625c744175aa7ab3b415a812d7e8f9144e8b64531f929e3eeebfecea3a4aa494495db4c4f08ebd79dfd4faeca2acef52cf0d83f8ce71eb0d6b60
   languageName: node
   linkType: hard
 
