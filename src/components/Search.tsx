@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ChevronsUpDownIcon } from "lucide-react";
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 
 import { Stack } from "../../styled-system/jsx";
 
@@ -14,7 +14,7 @@ type Props = {
   effects: Effect[];
 };
 
-type Result = { power: number; cast: number; times: number };
+type Result = { power: number; cast: number; times: number; effect: string };
 
 export function Search({ loading, effects }: Props) {
   const [selectedEffects, setSelectedEffects] = useState<
@@ -37,6 +37,7 @@ export function Search({ loading, effects }: Props) {
           (acc, eff) => ({
             ...acc,
             [eff.id]: {
+              effect: eff.name,
               power: i,
               cast: j,
               times: (acc[eff.id]?.times ?? 0) + 1,
@@ -67,12 +68,20 @@ export function Search({ loading, effects }: Props) {
       <Select.Root
         disabled={loading}
         collection={collection}
+        multiple
         onValueChange={({ items }) => setSelectedEffects(items)}
       >
         <Select.Label>Search for an effect</Select.Label>
         <Select.Control>
           <Select.Trigger>
-            <Select.ValueText placeholder="Select an effect" />
+            <Select.ValueText
+              placeholder="Select an effect"
+              flex="1"
+              textAlign="start"
+            />
+            <Select.ClearTrigger>
+              <XIcon />
+            </Select.ClearTrigger>
             <ChevronsUpDownIcon />
           </Select.Trigger>
         </Select.Control>
@@ -81,6 +90,9 @@ export function Search({ loading, effects }: Props) {
             {collection.items.map((item) => (
               <Select.Item key={item.value} item={item}>
                 <Select.ItemText>{item.label}</Select.ItemText>
+                <Select.ItemIndicator>
+                  <CheckIcon />
+                </Select.ItemIndicator>
               </Select.Item>
             ))}
           </Select.Content>
@@ -90,9 +102,15 @@ export function Search({ loading, effects }: Props) {
         <Stack gap={1}>
           {selectedEffects
             .flatMap((e) => effectToSeed[e.value] ?? [])
-            .map(({ power, cast, times }) => (
+            .toSorted((a, b) => {
+              if (a.power !== b.power) return a.power - b.power;
+              if (a.cast !== b.cast) return a.cast - b.cast;
+              return a.effect.localeCompare(b.effect);
+            })
+            .map(({ power, cast, times, effect }) => (
               <Text key={`${power}.${cast}`}>
                 Power: {power}, Cast: {cast}
+                {selectedEffects.length > 0 && ` for ${effect}`}
                 {times > 1 ? ` (x${times})` : ""}
               </Text>
             ))}
