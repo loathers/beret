@@ -10,10 +10,17 @@ function App() {
 
   const effects = useMemo(() => {
     const list: Effect[] = [];
+
+    // Only start showing effects when a power has been set
     if (power === undefined) return list;
+
+    // Total number of effects is based on power alone
     const total = Math.ceil(power / 100);
-    const seed = power + cast;
+
+    // RNG seeded with power + casts (0-indexed)
+    const seed = power + (cast - 1);
     const rng = new RNG(seed);
+
     for (let i = 0; i < total; i++) {
       list.push(rng.pickOne(allEffects as Effect[]));
     }
