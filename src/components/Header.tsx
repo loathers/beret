@@ -1,6 +1,6 @@
 import { css } from "../../styled-system/css";
 import { Stack } from "../../styled-system/jsx";
-import { Heading } from "./heading";
+import { Heading } from "./Heading";
 
 const leftHorn = css({
   transform: "scaleX(-1) rotate(70deg)",
