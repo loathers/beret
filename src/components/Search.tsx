@@ -70,6 +70,9 @@ export function Search({ loading, effects }: Props) {
         collection={collection}
         multiple
         onValueChange={({ items }) => setSelectedEffects(items)}
+        positioning={{
+          sameWidth: true,
+        }}
       >
         <Select.Label>Search for an effect</Select.Label>
         <Select.Control>
@@ -86,7 +89,7 @@ export function Search({ loading, effects }: Props) {
           </Select.Trigger>
         </Select.Control>
         <Select.Positioner>
-          <Select.Content>
+          <Select.Content maxHeight="300px" overflowY="auto">
             {collection.items.map((item) => (
               <Select.Item key={item.value} item={item}>
                 <Select.ItemText>{item.label}</Select.ItemText>
