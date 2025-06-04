@@ -8,15 +8,20 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "panda codegen"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.11.0",
     "kol-rng": "^2.0.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@pandacss/dev": "^0.53.7",
+    "@park-ui/panda-preset": "^0.43.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
@@ -27,7 +32,8 @@
     "prettier": "^3.5.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "packageManager": "yarn@4.9.2"
 }

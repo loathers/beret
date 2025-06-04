@@ -1,6 +1,9 @@
 import { useMemo, useState } from "react";
 import RNG from "kol-rng";
 import allEffects from "./effects.json";
+import { NumberInput } from "./components/NumberInput";
+import { Container } from "./components/Container";
+import { Header } from "./components/Header";
 
 type Effect = [id: number, name: string];
 
@@ -28,29 +31,23 @@ function App() {
   }, [power, cast]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1em" }}>
-      <div>
-        <h1 style={{ margin: 0 }}>Beret</h1>
-        <h3 style={{ margin: 0 }}>🎺 Buskin' makes me feel good 🎺</h3>
-      </div>
+    <Container>
+      <Header />
       <label>
         Power
-        <input
-          type="number"
-          placeholder="Over 9000!!!"
-          value={power}
-          onChange={(e) => setPower(Number(e.currentTarget.value))}
+        <NumberInput
+          value={power?.toString()}
+          onValueChange={({ valueAsNumber }) => setPower(valueAsNumber)}
         />
       </label>
       <label>
         Casts
-        <input
-          type="number"
-          step="1"
-          min="1"
-          max="5"
-          value={cast}
-          onChange={(e) => setCast(Number(e.currentTarget.value))}
+        <NumberInput
+          step={1}
+          min={1}
+          max={5}
+          value={cast?.toString()}
+          onValueChange={({ valueAsNumber }) => setCast(valueAsNumber)}
         />
       </label>
       {power !== undefined && (
@@ -62,7 +59,7 @@ function App() {
           ))}
         </ul>
       )}
-    </div>
+    </Container>
   );
 }
 
