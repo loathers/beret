@@ -41,7 +41,9 @@ function App() {
           <FormLabel>Power</FormLabel>
           <NumberInput
             value={power?.toString()}
-            onValueChange={({ valueAsNumber }) => setPower(valueAsNumber)}
+            onValueChange={({ valueAsNumber }) =>
+              setPower(Number.isNaN(valueAsNumber) ? undefined : valueAsNumber)
+            }
           />
         </Stack>
         <Stack>
@@ -51,7 +53,9 @@ function App() {
             min={1}
             max={5}
             value={cast?.toString()}
-            onValueChange={({ valueAsNumber }) => setCast(valueAsNumber)}
+            onValueChange={({ valueAsNumber }) =>
+              setCast(Number.isNaN(valueAsNumber) ? 1 : valueAsNumber)
+            }
           />
         </Stack>
         <EffectList effects={effects} />
