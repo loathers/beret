@@ -7,12 +7,8 @@ const containerStyles = css({
   flexDirection: "column",
   gap: "2em",
   padding: "2em",
-})
+});
 
 export function Container({ children }: Props) {
-  return (
-    <div className={containerStyles}>
-      {children}
-    </div>
-  );
+  return <div className={containerStyles}>{children}</div>;
 }

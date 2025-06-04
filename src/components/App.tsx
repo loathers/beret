@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 import RNG from "kol-rng";
-import allEffects from "./effects.json";
-import { NumberInput } from "./components/NumberInput";
-import { Container } from "./components/Container";
-import { Header } from "./components/Header";
+import allEffects from "../effects.json";
+import { NumberInput } from "./NumberInput";
+import { Container } from "./Container";
+import { Header } from "./Header";
+import { FormLabel } from "./FormLabel";
+import { Stack } from "../../styled-system/jsx";
 
 type Effect = [id: number, name: string];
 
@@ -33,15 +35,15 @@ function App() {
   return (
     <Container>
       <Header />
-      <label>
-        Power
+      <Stack>
+        <FormLabel>Power</FormLabel>
         <NumberInput
           value={power?.toString()}
           onValueChange={({ valueAsNumber }) => setPower(valueAsNumber)}
         />
-      </label>
-      <label>
-        Casts
+      </Stack>
+      <Stack>
+        <FormLabel>Cast</FormLabel>
         <NumberInput
           step={1}
           min={1}
@@ -49,7 +51,7 @@ function App() {
           value={cast?.toString()}
           onValueChange={({ valueAsNumber }) => setCast(valueAsNumber)}
         />
-      </label>
+      </Stack>
       {power !== undefined && (
         <ul>
           {effects.map(([id, name], index) => (
