@@ -19,7 +19,7 @@ export function EffectList({ effects }: Props) {
     <ul className={listStyle}>
       {effects.map((effect, index) => (
         <li key={index}>
-          <Stack direction="horizontal" title={`Effect id ${effect.id}`}>
+          <Stack direction="horizontal" title={`Effect id ${effect.id}`} alignItems="center">
             <img
               src={`https://d2uyhvukfffg5a.cloudfront.net/itemimages/${effect.image}`}
               alt={effect.name}
