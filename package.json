@@ -15,6 +15,7 @@
     "@ark-ui/react": "^5.11.0",
     "data-of-loathing": "^2.2.0",
     "kol-rng": "^2.0.0",
+    "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "remove": "^0.1.5"
