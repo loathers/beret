@@ -5,11 +5,19 @@ import { Heading } from "./Heading";
 const leftHorn = css({
   transform: "scaleX(-1) rotate(70deg)",
   display: "inline-block",
+  transition: "transform 0.5s ease-in-out",
+  "&:hover": {
+    transform: "scaleX(-1) rotate(65deg) scale(1.2)",
+  },
 });
 
 const rightHorn = css({
   transform: "rotate(70deg)",
   display: "inline-block",
+  transition: "transform 0.5s ease-in-out",
+  "&:hover": {
+    transform: "rotate(75deg) scale(1.2)",
+  },
 });
 
 export function Header() {
