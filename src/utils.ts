@@ -6,7 +6,7 @@ export function rollEffects(effects: Effect[], power: number, cast: number) {
 
   if (effects.length === 0) return list;
 
-  const softcappedPower = power > 11_000 ? 11_000 + Math.floor((power - 11_000) ** 0.8) : power;
+  const softcappedPower = power > 1100 ? 1100 + Math.floor((power - 1100) ** 0.8) : power;
 
   // Total number of effects is based on power alone
   const total = Math.ceil(softcappedPower / 100);
