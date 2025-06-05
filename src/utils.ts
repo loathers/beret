@@ -10,7 +10,7 @@ export function rollEffects(effects: Effect[], power: number, cast: number) {
   const total = Math.ceil(power / 100);
 
   // Power is soft capped at 1,100
-  const cappedPower = Math.min(1100, power) + Math.pow(power - 1100, 0.8);
+  const cappedPower = Math.min(1100, power) + Math.floor(Math.pow(power - 1100, 0.8));
 
   // RNG seeded with power + casts (0-indexed)
   const seed = cappedPower + (cast - 1);
