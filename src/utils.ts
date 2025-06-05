@@ -6,13 +6,13 @@ export function rollEffects(effects: Effect[], power: number, cast: number) {
 
   if (effects.length === 0) return list;
 
-  // Total number of effects is based on power alone
-  const total = Math.ceil(power / 100);
-
   // Power is soft capped at 1,100
   const cappedPower =
     Math.min(1100, power) +
     Math.floor(Math.pow(Math.max(0, power - 1100), 0.8));
+
+  // Total number of effects is based on power alone
+  const total = Math.ceil(cappedPower / 100);
 
   // RNG seeded with power + casts (0-indexed)
   const seed = cappedPower + (cast - 1);
