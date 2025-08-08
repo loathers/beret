@@ -23,3 +23,9 @@ export function rollEffects(effects: Effect[], power: number, cast: number) {
   }
   return list;
 }
+
+export function effectTurns(effect: Effect) {
+  // Fishy is hardcoded to give one turn
+  if (effect.id === 549) return `1 Adventure`;
+  return `10 Adventures`;
+}

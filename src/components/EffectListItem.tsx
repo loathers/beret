@@ -2,6 +2,7 @@ import { Stack } from "../../styled-system/jsx";
 import type { Effect } from "../data";
 import { Text } from "./Text";
 import { Modifiers } from "./Modifiers";
+import { effectTurns } from "../utils";
 
 type Props = {
   effect: Effect;
@@ -31,7 +32,7 @@ export function EffectListItem({ effect }: Props) {
                 {effect.name}
               </a>
             </b>{" "}
-            (10 Adventures)
+            ({effectTurns(effect)})
           </Text>
           {modifiers && <Modifiers modifiers={modifiers} />}
         </Stack>
