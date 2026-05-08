@@ -1,5 +1,6 @@
+import type { Effect } from "data-of-loathing";
+
 import { css } from "../../styled-system/css";
-import type { Effect } from "../data";
 import { EffectListItem } from "./EffectListItem";
 
 type Props = {

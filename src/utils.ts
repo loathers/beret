@@ -1,5 +1,5 @@
 import RNG from "kol-rng";
-import type { Effect } from "./data";
+import type { Effect } from "data-of-loathing";
 
 export function rollEffects(effects: Effect[], power: number, cast: number) {
   const list: Effect[] = [];

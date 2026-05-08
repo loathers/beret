@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
+import type { Effect } from "data-of-loathing";
 
 import { Stack } from "../../styled-system/jsx";
 
-import type { Effect } from "../data";
 import { rollEffects } from "../utils";
 
 import { createListCollection, Select } from "./Select";
@@ -82,11 +82,11 @@ export function Search({ loading, effects }: Props) {
               flex="1"
               textAlign="start"
             />
-            <Select.ClearTrigger>
-              <XIcon />
-            </Select.ClearTrigger>
             <ChevronsUpDownIcon />
           </Select.Trigger>
+          <Select.ClearTrigger>
+            <XIcon />
+          </Select.ClearTrigger>
         </Select.Control>
         <Select.Positioner>
           <Select.Content maxHeight="300px" overflowY="auto">

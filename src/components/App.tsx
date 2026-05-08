@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import type { Effect } from "data-of-loathing";
+
 import { Container } from "../../styled-system/jsx";
 import { Header } from "./Header";
 import { Stack } from "../../styled-system/jsx";
-import { load, type Effect } from "../data";
+import { load } from "../data";
 import { Tabs } from "./Tabs";
 import { Explore } from "./Explore";
 import { Search } from "./Search";

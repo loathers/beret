@@ -1,5 +1,6 @@
+import type { Effect } from "data-of-loathing";
+
 import { Stack } from "../../styled-system/jsx";
-import type { Effect } from "../data";
 import { Text } from "./Text";
 import { Modifiers } from "./Modifiers";
 import { effectTurns } from "../utils";
@@ -9,7 +10,7 @@ type Props = {
 };
 
 export function EffectListItem({ effect }: Props) {
-  const modifiers = effect.effectModifierByEffect?.modifiers;
+  const modifiers = effect.modifiers?.modifiers;
   const url = `https://wiki.kingdomofloathing.com/${modifiers?.["Wiki Name"]?.slice(1, -1) ?? effect.name}`;
   return (
     <li>
