@@ -1,10 +1,11 @@
+import type { Effect } from "data-of-loathing";
+
 import { Stack } from "../../styled-system/jsx";
 
 import { NumberInput } from "./NumberInput";
 import { FormLabel } from "./FormLabel";
 import { EffectList } from "./EffectList";
 import { useMemo, useState } from "react";
-import type { Effect } from "../data";
 import { rollEffects } from "../utils";
 
 type Props = {
