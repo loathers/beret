@@ -11,7 +11,7 @@ type Props = {
 
 export function EffectListItem({ effect }: Props) {
   const modifiers = effect.modifiers?.modifiers;
-  const url = `https://wiki.kingdomofloathing.com/${modifiers?.["Wiki Name"]?.slice(1, -1) ?? effect.name}`;
+  const url = `https://wiki.kingdomofloathing.com/Effect:{effect.id}`;
   return (
     <li>
       <Stack

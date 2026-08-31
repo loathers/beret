@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Text } from "./Text";
 
 export type Props = {
-  modifiers: { name: string, value: string }[];
+  modifiers: { name: string; value: string }[];
 };
 
 export function Modifiers({ modifiers }: Props) {
